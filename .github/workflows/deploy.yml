@@ -42,14 +42,10 @@ jobs:
 
       - name: Conditional Deployment for Subservices
         run: |
-          if git diff --name-only HEAD~1 HEAD | grep -q "^transformation_ai/"; then
-            echo "Deploying transformation_ai service..."
-            gcloud run deploy transformation-ai-service \
-              --image gcr.io/${{ env.PROJECT_ID }}/transformation-ai-service \
-              --region ${{ env.REGION }} \
-              --platform managed \
-              --allow-unauthenticated \
-              --set-env-vars "OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }},GCS_BUCKET=${{ secrets.GCS_BUCKET }}"
-          else
-            echo "No matching subservices to deploy."
-          fi
+          echo "Deploying transformation_ai service..."
+          gcloud run deploy transformation-ai-service \
+            --image gcr.io/${{ env.PROJECT_ID }}/transformation-ai-service \
+            --region ${{ env.REGION }} \
+            --platform managed \
+            --allow-unauthenticated \
+            --set-env-vars "OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }},GCS_BUCKET=${{ secrets.GCS_BUCKET }}"
