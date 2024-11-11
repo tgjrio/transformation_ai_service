@@ -7,6 +7,9 @@ WORKDIR /app
 # Copy the current directory contents into the container at /app
 COPY . /app
 
+# Add a debug step to inspect the directory structure
+RUN ls -R /app
+
 # Install any necessary dependencies specified in requirements.txt
 # (If you have a requirements.txt file)
 RUN pip install --no-cache-dir -r requirements.txt

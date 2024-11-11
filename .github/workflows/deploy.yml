@@ -10,8 +10,7 @@ jobs:
 
     env:
       PROJECT_ID: ${{ secrets.PROJECT_ID }}
-      REGION: ${{ secrets.REGION }}
-
+      
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -45,7 +44,7 @@ jobs:
           echo "Deploying transformation_ai service..."
           gcloud run deploy transformation-ai-service \
             --image gcr.io/${{ env.PROJECT_ID }}/transformation-ai-service \
-            --region ${{ env.REGION }} \
+            --region us-east1 \
             --platform managed \
             --allow-unauthenticated \
             --set-env-vars "OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }},GCS_BUCKET=${{ secrets.GCS_BUCKET }}"
