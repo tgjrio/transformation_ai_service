@@ -34,7 +34,7 @@ jobs:
     
       - name: Build Docker Image
         run: |
-          docker build -t gcr.io/${{ env.PROJECT_ID }}/transformation-ai-service ./transformation_ai
+          docker build -t gcr.io/${{ env.PROJECT_ID }}/transformation-ai-service .
 
       - name: Push Docker Image to Google Container Registry
         run: |

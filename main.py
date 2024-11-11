@@ -18,7 +18,6 @@ class DataRequest(BaseModel):
 # Initialize the GPTGenerator instance with the mocked client (replace with actual client)
 gpt_generator = GPTGenerator(client=settings.OPENAI_CLIENT)
 
-
 @app.post("/process-data/")
 async def process_data(request: DataRequest):
     try:
